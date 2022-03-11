@@ -6,10 +6,6 @@
 </head>
 
 <body>
-    <audio controls autoplay>
-        <source src="./media/sounds/song.ogg" type="audio/ogg">
-        Tu navegador no soporta este audio.
-    </audio>
     <div id="container">
         <canvas id="canvas" width="800" height="600">
             Descargue chrome para poder jugar este demo.
@@ -25,6 +21,10 @@
         </p>
 
         <p id="ctrls">Movimiento: Flechas | Disparar: presione X</p>
+        <audio autoplay>
+            <source src="./media/sounds/song.ogg" type="audio/ogg">
+            Tu navegador no soporta este audio.
+        </audio>
     </div>
 
     <script id="shader-fragment" type="x-shader/x-fragment">
