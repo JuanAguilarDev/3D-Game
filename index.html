@@ -1,57 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destructor de geometria</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
 <body>
-    <div id="contenedor" >
+    <audio controls autoplay>
+        <source src="./media/sounds/song.ogg" type="audio/ogg">
+        Tu navegador no soporta este audio.
+    </audio>
+    <div id="container">
         <canvas id="canvas" width="800" height="600">
-            Descargar Chrome para experimentar el Demo
+            Descargue chrome para poder jugar este demo.
         </canvas>
-        <span id="marcador">Marcador: <span id="cuenta">0</span></span>
-        <p id="titulo" class="strong pantalla">Destructor de Geometria</p>
-        <p id="inicio" class="pantalla">Presione <span class="strong">x</span> para iniciar</p>
-        <p id="fin" class="pantalla oculta">
-            <span class="strong">Juego Terminado</span>
+
+        <span id="score">Score: <span id="count">0</span></span>
+
+        <p id="title" class="strong screen">Destructor Geometria</p>
+        <p id="start" class="screen">Presione <span class="strong">X</span> para iniciar</p>
+
+        <p id="end" class="screen hide">
+            <span class="strong">Fin del juego</span>
         </p>
-        <p id="ctrls">Mover: Teclas flechas | Disparar: Presionar X</p>
+
+        <p id="ctrls">Movimiento: Flechas | Disparar: presione X</p>
     </div>
 
+    <script id="shader-fragment" type="x-shader/x-fragment">
+        varying lowp vec4 vColor;
+
+        void main(void) {
+            gl_FragColor = vColor;
+        }
+    </script>
+
     <script id="shader-vertex" type="x-shader/x-vertex">
-        attribute vec3 aVertexPosition; 
+        attribute vec3 aVertexPosition;
         attribute vec4 aVertexColor;
 
-        uniform mat4 uMVMatrix; 
+        uniform mat4 uMVMatrix;
         uniform mat4 uPMatrix;
 
-        varying lowp vec4 vColor; 
-        void main(void){
+        varying lowp vec4 vColor;
+
+        void main(void) {
             gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
             vColor = aVertexColor;
         }
     </script>
 
-    <script id="shader-fragment" type="x-shader/x-fragment" >
-        varying lowp vec4 vColor; 
-        void main(void){
-            gl_FragColor = vColor;
-        }
-    </script>
-
-    <script src="js/engine/assets/sylvester.js" type="text/javascript"></script>
-    <script src="js/engine/assets/webgl_util.js" type="text/javascript"></script>
-    <script src="js/engine/assets/clases.js" type="text/javascript"></script>
-    <script src="js/engine/assets/animacion.js" type="text/javascript"></script>
-
-    <script src="js/engine/principal.js" type="text/javascript"></script>
-    <script src="js/engine/juego.js" type="text/javascript"></script>
-    <script src="js/engine/plantilla.js" type="text/javascript"></script>
-
-    <script src="js/ejecuta.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="js/engine/assets/sylvester.js"></script>
+    <script type="text/javascript" src="js/engine/assets/webgl_util.js"></script>
+    <script type="text/javascript" src="js/engine/assets/animacion.js"></script>
+    <script type="text/javascript" src="js/engine/assets/clases.js"></script>
+    <script type="text/javascript" src="js/engine/principal.js"></script>
+    <script type="text/javascript" src="js/engine/juego.js"></script>
+    <script type="text/javascript" src="js/engine/plantilla.js"></script>
+    <script type="text/javascript" src="js/ejecuta.js"></script>
 </body>
 </html>
